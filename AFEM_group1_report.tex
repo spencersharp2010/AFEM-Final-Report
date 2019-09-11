@@ -1,0 +1,48 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%											  	 %%
+%% Author : Andreas Apostolatos               	 %%
+%%											  	 %%
+%% e-mail : andreas.apostolatos@tum.de		   	 %%
+%%											  	 %%
+%% sampleReportAFEM.tex					  	   	 %%
+%%											  	 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[a4paper,twoside,10pt]{article}
+\input{includes/packages}
+\bibliography{literature}
+\usepackage[utf8]{inputenc}
+\begin{document}
+
+	\input{includes/titlePage}
+	
+	\input{./sections/00_Abstract}
+
+	\input{./sections/01_Introduction}
+	%\newpage
+	
+	\input{./sections/02_Theoretical_background}
+
+	\input{./sections/03_Objective_functions}
+	
+	\input{./sections/04_Workflow}
+
+	\input{./sections/05_Perturbation_study}
+	
+	\input{./sections/06_Problem_case}
+	%\newpage
+	
+	\input{./sections/07_Results}
+	%\newpage
+	
+	\input{./sections/08_Conclusions}
+	
+	\newpage
+	\nocite{*} %Even non-cited BibTeX-Entries will be shown.
+	\printbibliography
+	   
+	\newpage
+	\appendix
+
+    \input{./sections/09_Appendix}
+
+\end{document}

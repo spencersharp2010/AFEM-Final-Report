@@ -1,0 +1,56 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%											  	 %%
+%% Author : Andreas Apostolatos               	 %%
+%%											  	 %%
+%% e-mail : andreas.apostolatos@tum.de		   	 %%
+%%											  	 %%
+%% 03_Objective_functions.tex					 %%
+%%											  	 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Objective functions for Sensitivity Analysis}
+As previously anticipated, in general sensitivity analysis investigates the influence of a given perturbation on the input variables on the results. Connecting those two are the objective functions. \\[6pt]
+Since the problem concerns a structural analysis, the objective functions which are taken into account are \textit{displacements}, \textit{strain energy} and \textit{Von Mises stress}.\\
+The results can be combined at the end in order to achieve what sensitivity analysis is particularly suitable for, that is optimization. \\[6pt]
+For example, if the intent is to minimize displacements for a specific node, a sensitivity analysis will reveal which parts of the structure influence more heavily that node's displacement, and which parts have little influence. That would allow, for instance, to know where to stiffen the structure in order to get a lower displacement where desired. \\[6pt]
+In the following sections, the different objective functions are illustrated, together with their derivation.
+
+\subsection{Displacement}
+
+From \cite{masching_dissertation}, adjoint variable for displacement sensitivity:
+\begin{equation}
+\Lambda = \textbf{K}^{-1}\cdot\textbf{v}
+\label{}
+\end{equation}
+Displacement sensitivity: 
+\begin{equation}
+\dv{D_{lin}}{s_i} = \Big[\pdv{\textbf{f}_{ext}}{s_i} - \pdv{\textbf{K}}{s_i} \cdot\textbf{u}\Big]^T \cdot \Lambda
+\label{}
+\end{equation}
+
+\subsection{Strain energy}
+
+From \cite{masching_dissertation}, adjoint variable for strain energy sensitivity:
+\begin{equation}
+\Lambda = \textbf{K}^{-1} \cdot \Big[\frac{1}{2}\cdot\textbf{f}_{ext} \Big] = \frac{1}{2}\textbf{u}
+\end{equation}
+
+where...
+\begin{equation}
+    \textbf{K}^{-1} = \big[ \pdv{\textbf{s}}{\textbf{u}}\big]
+\end{equation}
+
+and...
+\begin{equation}
+    \frac{1}{2}\cdot\textbf{f}_{ext} = \pdv{E_{lin}}{\textbf{u}}
+\end{equation}
+%$\textbf{K}^{-1} = \big[ \pdv{\textbf{s}}{\textbf{u}}\big]$ and %$\frac{1}{2}\cdot\textbf{f}_{ext} = \pdv{E_{lin}}{\textbf{u}}$ FIX\\[5pt]
+Strain energy sensitivity:
+\begin{equation}
+\dv{E_{lin}}{s_i} = \frac{1}{2}\cdot\textbf{u}^T
+\label{}
+\end{equation}
+\subsection{Von Mises stress}
+[INSERT CONTENT]
+%Don't think we need an optimization section here since it's discussed later
+%\subsection{Optimization}

@@ -1,0 +1,43 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%											  	 %%
+%% Author : Andreas Apostolatos               	 %%
+%%											  	 %%
+%% e-mail : andreas.apostolatos@tum.de		   	 %%
+%%											  	 %%
+%% 04_Workflow.tex					  	   	 	 %%
+%%											  	 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Workflow}
+The framework for the analysis has been given by the Chair of Structural Analysis. In the following sections, a deeper look at each step of the analysis is taken. The software and codes are analyzed and discussed; the modification are illustrated, as well as the final code capabilities. 
+\subsection{GiD}
+%Fonte_ GiD website
+GiD is an open source pre- and post-processor for numerical simulation in science and engineering, designed to cover some common needs in the numerical simulation field, such as: 
+\begin{itemize}
+\item Geometrical modeling (CAD) 
+\item Mesh generation
+\item Definition of analysis data
+\item Data transfer to analysis software
+\item Postprocessing operations
+\item Result visualization
+\end{itemize}
+For the purpose of the assignment, just a few of the previously listed functions are used: thanks to GiD, a case to analyze is set, in terms of \textit{shape}, \textit{boundary conditions}, \textit{load case}. \\[6pt]
+After that, a mesh is generated, and material law and mesh element type are assigned to the structure. \\[6pt]
+The output of the illustrated procedure consists of a \texttt{.dat} text file, which can be taken as an input by the Matlab code. The \texttt{.dat} file contains all necessary aforementioned information.\\[6pt]
+In order to improve the user experience, it was decided that expanding the GiD interface was preferred over hard coding sensitivity analysis information into Matlab. First of all, the given code was not able to deal with point loads. The first modification was to create an option for point loads application. The parser in Matlab was then modified accordingly to recognize and properly apply point loads to the given structure.\\[6pt]
+In addition, a menu was created, such that the user has the possibility to customize the sensitivity analysis in different ways. In particular, choices are given with respect to: 
+\begin {itemize}
+\item \textbf{Method}: global, numerical adjoint or analytical adjoint
+\item \textbf{Objective Function}: strain energy, displacement, Von Mises stress with node/element selection
+\item \textbf{Differencing Scheme}: forward, backward, or central differencing
+\end{itemize}
+\subsection{Matlab}
+In this paragraph, a brief explanation of the Matlab processing is given. For the purpose of the paper, it is thought that a qualitative discussion is sufficient, so no lines of code are included here, since it would be extremely complicated to write them in comprehensible, synthetic and significant way. The whole processing of the sensitivity analysis is done thanks to a code written in Matlab. The basis for that, as previously said, was given by the Chair of Structural Analysis.\\[6pt]
+In particular, the parsers were already able to perform structural calculations, as the response function of a given structure subject to an assigned line load. \\[6pt]
+First of all, for the sake of generality and completeness, the parsers were modified so that it is possible to assign a point load, an eventuality which was thought to be useful.\\[6pt]
+Then, the different sensitivity analysis for the objective functions were developed. Basically, the implementation required to translate into the Matlab code the derivation which was shown in the theoretical background section. 
+
+%Add which one is done with which method
+\subsection{ParaView}
+ParaView is an open source platform for interactive scientific visualization. Its only purpose in the given framework is to allow to get visual plots of the results. Here it is possible to see the structure, together with the mesh, the loads and the boundary conditions, and its response to the variation of the input variables. 
+
