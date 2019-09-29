@@ -1,18 +1,22 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%											  	 %%
-%% Author : Andreas Apostolatos               	 %%
-%%											  	 %%
-%% e-mail : andreas.apostolatos@tum.de		   	 %%
-%%											  	 %%
-%% sampleReportAFEM.tex					  	   	 %%
-%%											  	 %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Authors :    Giovanni Arcari                 %%
+%%              Maria Bronzova                  %%
+%%              Luca Sardi                      %%
+%%              Spencer Sharp                   %%
+%%                                              %%
+%% Supervisor : Andreas Apostolatos             %%
+%%											  	%%
+%% e-mail : andreas.apostolatos@tum.de		   	%%
+%%											  	%%
+%% AFEM_group1_report.tex					  	%%
+%%											  	%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[a4paper,twoside,10pt]{article}
 \input{includes/packages}
 \bibliography{literature}
 \usepackage[utf8]{inputenc}
 \begin{document}
-
+    \pagenumbering{alph}
 	\input{includes/titlePage}
 	
 	\input{./sections/00_Abstract}
@@ -36,11 +40,11 @@
 	
 	\input{./sections/08_Conclusions}
 	
-	\newpage
+	%\newpage
 	\nocite{*} %Even non-cited BibTeX-Entries will be shown.
 	\printbibliography
 	   
-	\newpage
+	%\newpage
 	\appendix
 
     \input{./sections/09_Appendix}

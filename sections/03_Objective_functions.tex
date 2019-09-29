@@ -1,18 +1,21 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%											  	 %%
-%% Author : Andreas Apostolatos               	 %%
-%%											  	 %%
-%% e-mail : andreas.apostolatos@tum.de		   	 %%
-%%											  	 %%
-%% 03_Objective_functions.tex					 %%
-%%											  	 %%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Objective functions for Sensitivity Analysis}
-As previously anticipated, in general sensitivity analysis investigates the influence of a given perturbation on the input variables on the results. Connecting those two are the objective functions. \\[6pt]
-Since the problem concerns a structural analysis, the objective functions which are taken into account are \textit{displacements}, \textit{strain energy} and \textit{Von Mises stress}.\\
-The results can be combined at the end in order to achieve what sensitivity analysis is particularly suitable for, that is optimization. \\[6pt]
-For example, if the intent is to minimize displacements for a specific node, a sensitivity analysis will reveal which parts of the structure influence more heavily that node's displacement, and which parts have little influence. That would allow, for instance, to know where to stiffen the structure in order to get a lower displacement where desired. \\[6pt]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Authors :    Giovanni Arcari                 %%
+%%              Maria Bronzova                  %%
+%%              Luca Sardi                      %%
+%%              Spencer Sharp                   %%
+%%                                              %%
+%% Supervisor : Andreas Apostolatos             %%
+%%											  	%%
+%% e-mail : andreas.apostolatos@tum.de		   	%%
+%%											  	%%
+%% 03_Objective_functions.tex					%%
+%%											  	%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{OBJECTIVE FUNCTIONS FOR SENSITIVITY ANALYSIS} \label{section:ObjectiveFunctions}
+As previously anticipated, in general sensitivity analysis investigates the influence of a given perturbation on the input variables on the results. Connecting those two are the objective functions. \\[3pt]
+Since the problem concerns a structural analysis, the objective functions which are taken into account are \textit{displacements}, \textit{strain energy} and \textit{Von Mises stress}.\\[3pt]
+The results can be combined at the end in order to achieve what sensitivity analysis is particularly suitable for: optimization. \\[3pt]
+For example, if the intent is to minimize displacements for a specific node, a sensitivity analysis will reveal which parts of the structure influence more heavily that node's displacement, and which parts have little influence. That would allow, for instance, to know where to stiffen the structure in order to get a lower displacement where desired. \\[3pt]
 In the following sections, the different objective functions are illustrated, together with their derivation.
 
 \subsection{Displacement}
@@ -22,6 +25,13 @@ From \cite{masching_dissertation}, adjoint variable for displacement sensitivity
 \Lambda = \textbf{K}^{-1}\cdot\textbf{v}
 \label{}
 \end{equation}
+
+where...
+\begin{equation}
+\textbf{v}^T=[0 ...0\,\,1\,\,0...0]
+\label{}
+\end{equation}
+
 Displacement sensitivity: 
 \begin{equation}
 \dv{D_{lin}}{s_i} = \Big[\pdv{\textbf{f}_{ext}}{s_i} - \pdv{\textbf{K}}{s_i} \cdot\textbf{u}\Big]^T \cdot \Lambda
@@ -47,10 +57,16 @@ and...
 %$\textbf{K}^{-1} = \big[ \pdv{\textbf{s}}{\textbf{u}}\big]$ and %$\frac{1}{2}\cdot\textbf{f}_{ext} = \pdv{E_{lin}}{\textbf{u}}$ FIX\\[5pt]
 Strain energy sensitivity:
 \begin{equation}
-\dv{E_{lin}}{s_i} = \frac{1}{2}\cdot\textbf{u}^T
+\dv{E_{lin}}{s_i} = \frac{1}{2}\cdot\textbf{u}^T\cdot\pdv{\textbf{f}_{ext}}{s_i}+\Big[\pdv{\textbf{f}_{ext}}{s_i} - \pdv{\textbf{K}}{s_i} \cdot\textbf{u}\Big]^T \cdot \Lambda
 \label{}
 \end{equation}
 \subsection{Von Mises stress}
-[INSERT CONTENT]
-%Don't think we need an optimization section here since it's discussed later
-%\subsection{Optimization}
+From \cite{vonMises}, generally the von Mises stress expressed in principal stresses in 3D reads: 
+\begin{equation} \label{eqn:vonMises3D}
+\sigma^2_{von Mises}=\frac{1}{2}\big [\big(\sigma_{1}-\sigma_{2}\big )^2+\big(\sigma_{2}-\sigma_{3}\big )^2+\big(\sigma_{3}-\sigma_{1}\big )^2\big]
+\end{equation}
+For 2D problems, equation \ref{eqn:vonMises3D} can be simplified to equation \ref{eqn:vonMises2D}, which is what was used for the purpose of this assignment.
+\begin{equation} \label{eqn:vonMises2D}
+\sigma^2_{von Mises}=\sigma_{1}^2+\sigma_{2}^2-\sigma_{1}\cdot\sigma_{2}
+\end{equation}
+As the von Mises stress was treated only in the framework of the global sensitivity analysis, no further derivations for the adjoint sensitivity analysis have been made.
